@@ -10,4 +10,17 @@ class Solution {
         
         return answer;
     }
+
+
+    // 최대 공약수로 계산
+    public int sumDivisor(int num) { 
+        int answer = 0;
+        for(int i=1 ; i<=num/2;i++){ 
+            if(num%i==0){
+                answer+=i;
+            }
+        }
+
+        return answer+num;
+    }
 }
