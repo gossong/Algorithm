@@ -1,4 +1,4 @@
-# [unrated] qr code - 181903 
+# [lv0] qr code - 181903 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181903) 
 
