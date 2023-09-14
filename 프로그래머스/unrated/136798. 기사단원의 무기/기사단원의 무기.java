@@ -12,17 +12,16 @@ class Solution {
 //                  cnt++;
 //              }
 //          }
-            // 제곱근으로 확인 (sqrt로 확인 가능)
+            // 제곱근까지 확인
             for(int j=1; j*j<=i; j++){
                 if(i%j==0){
-                   cnt += 2;
+                   divNum[i-1] += 2;
                    if(j*j==i){
-                       cnt -= 1;
+                       divNum[i-1] -= 1;
                    }
                }
             }
-               
-               divNum[i-1] = cnt;
+
                System.out.println(divNum[i-1]);
                
                if(divNum[i-1]<=limit){
