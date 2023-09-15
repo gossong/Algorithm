@@ -23,14 +23,14 @@ class Solution {
     }
 
     // Math.max, Math.min을 사용
-    public int solution(int[][] sizes) {
-        int length = 0, height = 0;
-        for (int[] card : sizes) {
-            // 0행, 1행 중 - length : 큰 값 저장, height : 작은 값 저장
-            length = Math.max(length, Math.max(card[0], card[1]));
-            height = Math.max(height, Math.min(card[0], card[1]));
-        }
-        int answer = length * height;
-        return answer;
+    // public int solution(int[][] sizes) {
+    //     int length = 0, height = 0;
+    //     for (int[] card : sizes) {
+    //         // 0행, 1행 중 - length : 큰 값 저장, height : 작은 값 저장
+    //         length = Math.max(length, Math.max(card[0], card[1]));
+    //         height = Math.max(height, Math.min(card[0], card[1]));
+    //     }
+    //     int answer = length * height;
+    //     return answer;
     }
 }
