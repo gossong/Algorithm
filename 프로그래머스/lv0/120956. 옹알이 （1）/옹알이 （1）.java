@@ -1,26 +1,25 @@
 class Solution {
     public int solution(String[] babbling) {
         int answer = 0;
-        
-        String [] word = {"aya", "woo", "ye", "ma"};
-        
+                
         for(int i = 0; i < babbling.length; i++){
+            // 해당하는 단어를 "1"로 replace
             String str = babbling[i].replace("aya","1");
             str = str.replace("woo","1");
             str = str.replace("ye","1");
             str = str.replace("ma","1");
             
+            System.out.println(str);
             int num;
-
+            
             try {
+                // string to int
                 num = Integer.parseInt(str);
+                // 전부 숫자일 경우, answer += 1
                 if(num>0){
-                    System.out.println(str);    
                     answer += 1;
                 }
-            } catch (NumberFormatException e){
-                num = 0; // 숫자로 변환할수 없는 문자열 형태이면 0으로 초기화
-            }
+            } catch (NumberFormatException e){}
         }
         
         return answer;
