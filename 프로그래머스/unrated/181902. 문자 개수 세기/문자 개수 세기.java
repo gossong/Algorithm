@@ -3,13 +3,12 @@ class Solution {
         int[] answer = new int[52];
 
         for(int i = 0; i < my_string.length(); i++){
-            for(char letter = 'A'; a <= 'z'; a++){
-                if(letter==my_string.charAt(i)){
-                    // 아스키코드 사용
-                    if(letter<='Z'){  // 대문자
-                        answer[letter-65] += 1;
-                    }else{  // 소문자
-                        answer[letter-71] += 1;
+            for(char a = 'A'; a <= 'z'; a++){
+                if(a==my_string.charAt(i)){
+                    if(a<='Z'){
+                        answer[a-'A'] += 1;
+                    }else{
+                        answer[a-'a'+26] += 1;
                     }
                 }
             }
