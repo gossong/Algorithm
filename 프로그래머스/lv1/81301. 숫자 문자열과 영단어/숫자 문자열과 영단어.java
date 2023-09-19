@@ -1,7 +1,8 @@
 class Solution {
     public int solution(String s) {
         int answer = 0;
-        
+
+        // 시간초과
         // s = s.replace("zero","0");
         // s = s.replace("one","1");
         // s = s.replace("two","2");
