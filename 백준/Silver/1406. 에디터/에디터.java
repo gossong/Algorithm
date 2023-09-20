@@ -1,62 +1,63 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.StringTokenizer;
 
 public class Main {
+	
+	static final int MX = 1000005;
+    static char[] dat = new char[MX];  // 현재 인덱스
+    static int[] pre = new int[MX];    // 이전 인덱스
+    static int[] nxt = new int[MX];    // 다음 인덱스
+    static int unused = 1;  // 현재 사용되지 않는 인덱스
+    
+	static void insert(int addr, char num) {
+		dat[unused] = num;
+		pre[unused] = addr;
+		nxt[unused] = nxt[addr];
+		if(nxt[addr] != -1)
+			pre[nxt[addr]] = unused;
+		nxt[addr] = unused;
+		unused++;
+	}
+	
+	static void erase(int addr) {
+		nxt[pre[addr]] = nxt[addr];
+		if(nxt[addr] != -1)
+			pre[nxt[addr]] = pre[addr];
+	}
+	
+	static StringBuilder traverse(StringBuilder sb){
+		int cur = nxt[0];  
+		while(cur != -1){  
+			sb.append(dat[cur]);
+			cur = nxt[cur];
+		}
+		return sb;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		// LinkedList
-		LinkedList<String> wordList = new LinkedList<String>();
-		String word[] = br.readLine().split("");
+		StringBuilder sb = new StringBuilder();
 		
-		// 영어 소문자 String 저장
-		for(String s:word) {
-			wordList.add(s);
-		}
+		// 배열 초기화
+		Arrays.fill(pre, -1);
+		Arrays.fill(nxt, -1);
+		
+		String input = br.readLine();
+		
+		// cursor
+	    int cursor;
+	    for (cursor = 0; cursor < input.length();) {
+	    	insert(cursor, input.charAt(cursor));
+	        cursor++;
+	    }
 		
 		// 명령어 개수 int
 		int n = Integer.parseInt(br.readLine());
-		
-		// 커서 위치 (시간 초과)
-//		int cursor = word.length;
-//		
-//		while(n!=0) {
-//			
-//			// 명령어
-//			String command[] = br.readLine().split(" ");
-//			String firstCommand = command[0];
-//			
-//			if(firstCommand.equals("L")) {
-//				if(cursor!=0) {
-//					cursor--;
-//				}
-//			}else if(firstCommand.equals("D")) {
-//				if(cursor!=wordList.size()) {
-//					cursor++;
-//				}
-//			}else if(firstCommand.equals("B")) {
-//				if(cursor!=0) {
-//					cursor--;
-//					wordList.remove(cursor);
-//				}
-//			}else{
-//				wordList.add(cursor, command[1]);
-//				cursor++;
-//			}
-//			n--;
-//		}
-		
-		// ListIterator 사용 : 리스트를 양방향으로 탐색하는 listIterator
-		ListIterator<String> iter = wordList.listIterator();
-		
-		// 커서 초기화 : 맨 뒤
-		while(iter.hasNext()) {
-			iter.next();
-		}
-		
 		while(n!=0) {
 			
 			// 명령어
@@ -64,24 +65,28 @@ public class Main {
 			String firstCommand = command[0];
 			
 			if(firstCommand.equals("L")) {
-				if(iter.hasPrevious()) {
-					iter.previous();
+				if(pre[cursor] != -1) {
+					cursor = pre[cursor];
 				}
 			}else if(firstCommand.equals("D")) {
-				if(iter.hasNext()) {
-					iter.next();
+				if(nxt[cursor] != -1) {
+					cursor = nxt[cursor];
 				}
 			}else if(firstCommand.equals("B")) {
-				if(iter.hasPrevious()) {
-					iter.previous();
-					iter.remove();
+				if(pre[cursor] != -1) {
+					erase(cursor);
+					cursor = pre[cursor];
 				}
 			}else{
-				iter.add(command[1]);
+				char ch = command[1].charAt(0);
+				insert(cursor, ch);
+				cursor = nxt[cursor];
 			}
 			n--;
 		}
 		
-		System.out.println(String.join("", wordList));
+		System.out.println(traverse(sb));
+		
+		
 	}
 }
