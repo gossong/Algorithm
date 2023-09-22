@@ -1,19 +1,61 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
+	
+	static final int MX = 1000005;
+    static int[] dat = new int[MX];
+    static int head = 0, tail = 0;
+    
+    static void push(int x){
+    	dat[tail++] = x;
+    }
+    
+    static int pop() {
+    	if(tail-head==0) {
+    		return -1;
+    	}else {
+    		return dat[head++];
+    	}
+    	
+    }
+    
+    static int size() {
+    	return tail-head;
+    }
+    
+    static int empty() {
+    	if(tail-head == 0) {
+    		return 1;
+    	}else {
+    		return 0;
+    	}
+    
+    }
+    
+    static int front() {
+    	if(tail-head==0) {
+    		return -1;
+    	}else {
+    		return dat[head];
+    	}
+    }
+    
+    static int back() {
+    	if(tail-head==0) {
+    		return -1;
+    	}else {
+    		return dat[tail - 1];
+    	}
+    }
     
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Queue<Integer> queue = new LinkedList<>();
 		StringBuilder sb = new StringBuilder();
 		
 		StringTokenizer st;
-		int last = 0;
 		
 		// 명령어 개수 n
 		int n = Integer.parseInt(br.readLine());
@@ -24,40 +66,22 @@ public class Main {
 			String command = st.nextToken();
 			
 			if(command.equals("push")) {
-				last = Integer.parseInt(st.nextToken());
-				queue.add(last);
+				push(Integer.parseInt(st.nextToken()));
 				
 			}else if(command.equals("pop")) {
-				if(queue.isEmpty()) {
-					sb.append(-1).append('\n');
-					
-				}else {
-					sb.append(queue.remove()).append('\n');
-				}
+				sb.append(pop()).append('\n');
 				
 			}else if(command.equals("empty")) {
-				if(queue.isEmpty()) {
-					sb.append(1).append('\n');
-				}else {
-					sb.append(0).append('\n');
-				}
+				sb.append(empty()).append('\n');
 				
 			}else if(command.equals("size")) {
-				sb.append(queue.size()).append('\n');
+				sb.append(size()).append('\n');
 				
 			}else if(command.equals("front")) {
-				if(queue.isEmpty()){
-					sb.append(-1).append('\n');
-				}else {
-					sb.append(queue.peek()).append('\n');
-				}
+				sb.append(front()).append('\n');
 				
 			}else {
-				if(queue.isEmpty()){
-					sb.append(-1).append('\n');
-				}else {
-					sb.append(last).append('\n');
-				}
+				sb.append(back()).append('\n');
 			}
 			n--;
 		}
