@@ -12,7 +12,7 @@ class Solution {
         // s = s.replace("six","6");
         // s = s.replace("seven","7");
         // s = s.replace("eight","8");
-        // s = s.replace("night","9");
+        // s = s.replace("nine","9");
         
         String[] num = {"0", "1", "2", "3", "4", 
                         "5", "6", "7", "8", "9"};
