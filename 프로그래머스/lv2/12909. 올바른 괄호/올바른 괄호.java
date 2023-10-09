@@ -11,16 +11,16 @@ class Solution {
 			
 			// 여는 괄호
 			if(c == '(') {
-                deque.add(c);
+                		deque.add(c);
 				
 			// 닫는 괄호
 			}else {
-                // deque이 비어있지 않으면서, 이전 '('일 경우 -> () 제거
-                if(deque.size()>0 && deque.getLast() == '(') {
-                    deque.remove();
-                }else {
-                    deque.add(c);
-                }	
+				// deque이 비어있지 않으면서, 이전 '('일 경우 -> () 제거
+				if(deque.size()>0 && deque.getLast() == '(') {
+				    deque.remove();
+				}else {
+				    deque.add(c);
+				}	
 			}
 		}
         
@@ -28,7 +28,6 @@ class Solution {
         if(deque.size()==0){
             answer = true;
         }
-        
         
         return answer;
     }
