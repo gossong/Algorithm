@@ -22,7 +22,13 @@ class Solution {
             }
             answer[i] = ans;
         }
-        
+
+        // toBinaryString로 이진수로 변환, replaceAll로 치환
+        // for (int i = 0; i < n; i++) {
+        //     answer[i] = String.format("%" + n + "s", Integer.toBinaryString(arr1[i] | arr2[i]));
+        //     answer[i] = answer[i].replaceAll("1", "#").replaceAll("0", " ");
+        // }
+
         return answer;
     }
     
