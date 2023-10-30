@@ -29,6 +29,9 @@ class Solution {
             for(int i = 0; i < result.size(); i++){
                 answer[i] = result.get(i);
             }
+            // ArrayList result를 배열로 변환할 때, 
+            // Java 8 이상에서는 'stream.mapToInt(i -> i).toArray() 메소드 사용하여 변환 가능
+            // result.stream().mapToInt(i -> i).toArray();
             return answer;
         }
 
