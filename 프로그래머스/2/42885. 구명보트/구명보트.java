@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public int solution(int[] people, int limit) {
         
-        Arrays.sort(people);  // 오름차순으로 정렬 50 50 70 80
+        Arrays.sort(people);  // 오름차순으로 정렬
 
         int check = 0;
         int j = 0;
