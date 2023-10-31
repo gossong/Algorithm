@@ -21,6 +21,13 @@ class Solution {
                 result.add(i);
             }
         }
+
+        // 이진법으로 풀이
+        // for (int i = 1; i < 64; i++) {
+        //     int num = Integer.parseInt(Integer.toBinaryString(i)) * 5;
+        //     if (l <= num && num <= r)
+        //         list.add(num);
+        // }
         
         if(result.isEmpty()){
             return new int[] {-1};
