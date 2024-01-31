@@ -6,8 +6,13 @@ class Solution {
             if(date1[i] == date2[i]){
                 i++;
             }else{
-                answer = date1[i] < date2[i] ? 1 : 0;
-                break;
+                if(date1[i] < date2[i]){
+                    answer = 1;
+                    break;
+                }else{
+                    answer = 0;
+                    break;
+                }
             }
         }
         return answer;
