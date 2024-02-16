@@ -3,7 +3,7 @@ class Solution {
         int answer = 0;
         String[] nums = (order+"").split("");
         for(String num : nums){
-            if(num.equals("3")||num.equals("6")||num.equals("9")){
+            if(Integer.parseInt(num)%3==0&&!num.equals("0")){
                 answer++;
             }
         }
